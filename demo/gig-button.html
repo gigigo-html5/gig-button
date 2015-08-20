@@ -46,7 +46,7 @@
             border-color: #76838f;
         }
 
-        .btn-primary {
+        .btn-primary, .btn-outline.btn-primary:hover  {
             background-color: #62a8ea;
             color: white;
             border-color: #62a8ea;
@@ -159,12 +159,42 @@
             color: #46be8a;
         }
 
+        .btn-outline.btn-danger {
+            color: #f96868;
+        }
+
+        .btn-outline.btn-info {
+            color: #57c7d4
+        }
+
+        .btn-outline.btn-warning {
+            color: #f2a654
+        }
+
+        .btn-floating {
+            width: 56px;
+            height: 56px;
+            padding: 0;
+            font-size: 24px;
+            text-align: center;
+            border-radius: 100%;
+            box-shadow: 0 6px 10px rgba(0,0,0,.15);
+        }
+
+        .btn-block {
+            display: block;
+            width: 100%;
+        }
+
     </style>
 
     <template>
 
         <button
             type$="[[button]]" class$="[[getClassList(class)]]" on-click="handleClick">
+            <template is="dom-if" if="[[icon]]">
+                <i class$="[[getClassIcon(icon)]]"></i>
+            </template>
             <content></content>
         </button>
 
@@ -181,6 +211,9 @@
                 },
                 getClassList: function(className) {
                     return className;
+                },
+                getClassIcon: function(icon) {
+                    return 'fa '+icon;
                 },
                 handleClick: function() {
                 },
