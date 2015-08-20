@@ -1,5 +1,12 @@
-<link rel="import" href="../bower_components/polymer/polymer.html">
-<link rel="stylesheet" href="../bower_components/components-font-awesome/css/font-awesome.css">
+<!--
+ Webcomponents to generate custom button
+ @version v0.0.1 - 2015-08-20
+ @link https://github.com/gigigo-html5/gig-button
+ @author Pedro José Peña Jerez <pedro.jose@gigigo.com>
+ @license MIT License, http://www.opensource.org/licenses/MIT
+ -->
+<link rel="import" href="../polymer/polymer.html">
+<link rel="stylesheet" href="../components-font-awesome/css/font-awesome.css">
 
 <dom-module id="gig-button">
 
@@ -279,7 +286,7 @@
     <template>
 
         <button
-            type$="[[button]]" class$="[[getClassList(class)]]" on-click="handleClick">
+                type$="[[button]]" class$="[[getClassList(class)]]" on-click="handleClick">
             <span>
                 <template is="dom-if" if="[[icon]]">
                     <i class$="[[getClassIcon(icon)]]"></i>
