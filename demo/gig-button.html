@@ -14,6 +14,26 @@
 
     <style>
 
+        :host {
+            display: inline-block;
+            position: relative;
+            box-sizing: border-box;
+            background: transparent;
+            text-align: center;
+            font: inherit;
+            text-transform: uppercase;
+            outline-width: 0;
+            border-radius: 3px;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            -webkit-user-select: none;
+            user-select: none;
+            cursor: pointer;
+            z-index: 0;
+            margin: 0 5px;
+            @apply(--gig-button);
+        }
+
         * {
             box-sizing: border-box;
             outline:none;
