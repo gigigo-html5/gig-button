@@ -308,11 +308,20 @@
             var self;
 
             Polymer({
+                listeners: {
+                    'click' : 'handleClick'
+                },
                 getClassList: function(className) {
                     return className;
                 },
                 getClassIcon: function(icon) {
                     return 'fa '+icon;
+                },
+                handleClick: function(e) {
+                    if (this.link) {
+                        window.open(this.link, this.target);
+                        e.preventDefault();
+                    }
                 },
                 properties: {
                     class: {
@@ -321,6 +330,14 @@
                     type: {
                         type: String,
                         value: 'button'
+                    },
+                    link: {
+                        type: String,
+                        value: null
+                    },
+                    target: {
+                        type: String,
+                        value: '_self'
                     }
                 }
             })

@@ -12,10 +12,15 @@
         body {
             margin: 0;
             padding: 0;
+            font-family: sans-serif;
         }
 
         .field {
             padding: 10px;
+        }
+
+        label {
+            display: block;
         }
 
     </style>
@@ -23,6 +28,11 @@
 <body>
     <div class="field">
         <gig-button class="btn-animate btn-animate-side btn-primary" icon="fa-thumbs-up">Enviar</gig-button>
+    </div>
+
+    <div class="field">
+        <label>Button with link</label>
+        <gig-button target="_blank" link="http://www.google.com" class="btn-animate btn-animate-side btn-primary" icon="fa-thumbs-up">Go to google.com</gig-button>
     </div>
 
 
