@@ -1,12 +1,21 @@
 <!--
  Webcomponents to generate custom button
- @version v0.0.1 - 2015-08-25
+ @version v0.0.2 - 2015-12-12
  @link https://github.com/gigigo-html5/gig-button
  @author Pedro José Peña Jerez <pedro.jose@gigigo.com>
  @license MIT License, http://www.opensource.org/licenses/MIT
  -->
+
 <link rel="import" href="../polymer/polymer.html">
 <link rel="stylesheet" href="../components-font-awesome/css/font-awesome.css">
+<script src="https://ajax.googleapis.com/ajax/libs/webfont/1.5.18/webfont.js"></script>
+<script>
+  WebFont.load({
+    google: {
+      families: ['Roboto:300,400']
+    }
+  });
+</script>
 
 <dom-module id="gig-button">
 
@@ -20,7 +29,7 @@
         button {
             padding: 6px 15px;
             font-size: 14px;
-            font-family: sans-serif;
+            font-family: Roboto, sans-serif;
             line-height: 1.57142857;
             border-radius: 3px;
             -webkit-font-smoothing: subpixel-antialiased;
@@ -287,8 +296,9 @@
 
         <button
             type$="[[type]]"
-            class$="[[getClassList(class)]]"
-            on-click="handleClick">
+            name$="[[name]]"
+            value$="[[value]]"
+            class$="[[getClassList(class)]]">
             <span>
                 <template is="dom-if" if="[[icon]]">
                     <i class$="[[getClassIcon(icon)]]"></i>
@@ -310,8 +320,6 @@
                 },
                 getClassIcon: function(icon) {
                     return 'fa '+icon;
-                },
-                handleClick: function() {
                 },
                 properties: {
                     class: {
