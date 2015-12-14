@@ -1,6 +1,6 @@
 {
   "name": "gig-button",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "homepage": "https://github.com/gigigo-html5/gig-button",
   "authors": [
     "Pedro Peña <pedro.jose@gigigo.com>"
@@ -14,7 +14,8 @@
     "tests"
   ],
   "dependencies": {
-    "polymer": "~1.0.9",
-    "components-font-awesome": "~4.4.0"
+    "polymer": "~1.2.0",
+    "components-font-awesome": "~4.4.0",
+    "ladda": "~0.9.8"
   }
 }

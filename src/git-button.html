@@ -1,6 +1,10 @@
 
 <link rel="import" href="../polymer/polymer.html">
 <link rel="stylesheet" href="../components-font-awesome/css/font-awesome.css">
+<link rel="stylesheet" href="../ladda/dist/ladda.min.css">
+<script src="../ladda/dist/spin.min.js"></script>
+<script src="../ladda/dist/ladda.min.js"></script>
+
 <script src="https://ajax.googleapis.com/ajax/libs/webfont/1.5.18/webfont.js"></script>
 <script>
   WebFont.load({
@@ -13,6 +17,7 @@
 <dom-module id="gig-button">
 
     <style>
+
         :host {
             display: inline-block;
             position: relative;
@@ -71,13 +76,18 @@
             border-color: #76838f;
         }
 
+        button[disabled] {
+            opacity: .65;
+            cursor: not-allowed;
+        }
+
         button i {
             width: 1em;
             line-height: inherit;
             margin: 0 3px;
         }
 
-        .btn-default {
+        .btn-default, .ladda-button.btn-default[disabled] {
             color: #76838f;
             background-color: #e4eaec;
             border-color: #e4eaec;
@@ -93,7 +103,7 @@
             border-color: #76838f;
         }
 
-        .btn-primary, .btn-outline.btn-primary:hover  {
+        .btn-primary, .btn-primary[disabled], .ladda-button.btn-primary[disabled], .btn-outline.btn-primary:hover  {
             background-color: #62a8ea;
             color: white;
             border-color: #62a8ea;
@@ -109,7 +119,7 @@
             border-color: #4e97d9;
         }
 
-        .btn-success {
+        .btn-success, .ladda-button.btn-success[disabled] {
             background-color: #46be8a;
             color: white;
             border-color: #46be8a;
@@ -126,7 +136,7 @@
             border-color: #36ab7a;
         }
 
-        .btn-info {
+        .btn-info, .ladda-button.btn-info[disabled] {
             background-color: #57c7d4;
             color: white;
             border-color: #57c7d4;
@@ -143,7 +153,7 @@
             border-color: #47b8c6;
         }
 
-        .btn-warning, .btn-outline.btn-warning:hover {
+        .btn-warning, .ladda-button.btn-warning[disabled], .btn-outline.btn-warning:hover {
             background-color: #f2a654;
             color: white;
             border-color: #f2a654;
@@ -159,7 +169,7 @@
             border-color: #e79857;
         }
 
-        .btn-danger {
+        .btn-danger, .ladda-button.btn-danger[disabled] {
             background-color: #f96868;
             color: white;
             border-color: #f96868;
@@ -176,7 +186,7 @@
             border-color: #e9595b;
         }
 
-        .btn-custom {
+        .btn-custom, .ladda-button.btn-custom[disabled] {
             background-color: --var(--button-background-color, #76838f);
             color: --var(--button-text-color, #76838f);
             border-color: --var(--button-border-color, #e4eaec);
@@ -302,16 +312,86 @@
             box-shadow: none;
         }
 
+        .btn-icon {
+            padding: 10px;
+            line-height: 1em;
+        }
+
+        .btn-icon i {
+            margin: -1px 0 0
+        }
+
+        .btn-round {
+            border-radius: 1000px;
+        }
+
+        .btn-pure, .btn-pure:hover {
+            background: transparent;
+            border: 0;
+        }
+
+        .btn-pure.btn-danger {
+            color: #f96868;
+        }
+
+        .btn-pure.btn-danger:hover {
+            color: #fa9898;
+        }
+
+        .btn-pure.btn-warning {
+            color: #f2a654;
+        }
+
+        .btn-pure.btn-warning:hover {
+            color: #f6be80;
+        }
+
+        .btn-pure.btn-info {
+            color: #57c7d4;
+        }
+
+        .btn-pure.btn-info:hover {
+            color: #77d6e1;
+        }
+
+        .btn-pure.btn-success {
+            color: #46be8a;
+        }
+
+        .btn-pure.btn-success:hover {
+            color: #5cd29d;
+        }
+
+        .btn-pure.btn-primary {
+            color: #4e97d9;
+        }
+
+        .btn-pure.btn-primary:hover {
+            color: #89bceb;
+        }
+
+        .btn-pure.btn-default {
+            color: #a3afb7;
+        }
+
+        .btn-pure.btn-default:hover {
+            color: #ccd5db;
+        }
+
+
     </style>
 
     <template>
 
         <button
+            id="button"
             type$="[[type]]"
             name$="[[name]]"
             value$="[[value]]"
-            class$="[[getClassList(class)]]">
-            <span>
+            class$="[[getClassList(class)]]"
+            data-style$="{{progress}}"
+            disabled$="{{disabled}}">
+            <span class="ladda-label">
                 <template is="dom-if" if="[[icon]]">
                     <i class$="[[getClassIcon(icon)]]"></i>
                 </template>
@@ -331,6 +411,11 @@
                     'click' : 'handleClick'
                 },
                 getClassList: function(className) {
+
+                    if (this.progress) {
+                        className += ' ladda-button';
+                    }
+
                     return className;
                 },
                 getClassIcon: function(icon) {
@@ -340,6 +425,15 @@
                     if (this.link) {
                         window.open(this.link, this.target);
                         e.preventDefault();
+                    }
+
+                    if (this.progress) {
+                        this.disabled = true;
+                    }
+                },
+                ready: function() {
+                    if (this.progress) {
+                        Ladda.bind(this.$.button);
                     }
                 },
                 properties: {
@@ -357,6 +451,13 @@
                     target: {
                         type: String,
                         value: '_self'
+                    },
+                    progress: {
+                        type: String
+                    },
+                    disabled: {
+                        type: Boolean,
+                        value: false
                     }
                 }
             })
