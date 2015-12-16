@@ -1,11 +1,10 @@
 <!--
  Webcomponents to generate custom button
- @version v0.0.5 - 2015-12-14
+ @version v0.0.6 - 2015-12-16
  @link https://github.com/gigigo-html5/gig-button
  @author Pedro José Peña Jerez <pedro.jose@gigigo.com>
  @license MIT License, http://www.opensource.org/licenses/MIT
  -->
-
 <link rel="import" href="../polymer/polymer.html">
 <link rel="stylesheet" href="../components-font-awesome/css/font-awesome.css">
 <link rel="stylesheet" href="../ladda/dist/ladda.min.css">
@@ -29,7 +28,7 @@
             display: inline-block;
             position: relative;
             box-sizing: border-box;
-            background: transparent;
+            background: transparent !important;
             text-align: center;
             font: inherit;
             text-transform: uppercase;
@@ -41,7 +40,8 @@
             user-select: none;
             cursor: pointer;
             z-index: 0;
-            margin: 0 5px;
+            margin: 0;
+            padding: 0 !important;
             @apply(--gig-button);
         }
 
@@ -160,7 +160,7 @@
             border-color: #47b8c6;
         }
 
-        .btn-warning, .ladda-button.btn-warning[disabled], .btn-outline.btn-warning:hover {
+        .btn-warning, .ladda-button.btn-warning[disabled], .btn-warning:hover {
             background-color: #f2a654;
             color: white;
             border-color: #f2a654;
@@ -440,7 +440,9 @@
                 },
                 ready: function() {
                     if (this.progress) {
-                        Ladda.bind(this.$.button);
+                        Ladda.bind(this.$.button, {
+                            timeout: this.progressTime
+                        });
                     }
                 },
                 properties: {
@@ -461,6 +463,10 @@
                     },
                     progress: {
                         type: String
+                    },
+                    progressTime: {
+                        type: Number,
+                        value: 2000
                     },
                     disabled: {
                         type: Boolean,
