@@ -1,20 +1,12 @@
 <link rel="import" href="../bower_components/polymer/polymer.html">
-<link rel="stylesheet" href="../bower_components/components-font-awesome/css/font-awesome.css">
+<link rel="import" href="../bower_components/gig-icon/gig-icon.html">
+<link rel="import" href="../bower_components/iron-icon/iron-icon.html">
 <link rel="stylesheet" href="../bower_components/ladda/dist/ladda.min.css">
+<link rel="stylesheet" href="../bower_components/font-roboto/dist/fonts/roboto.min.css">
 <script src="../bower_components/ladda/dist/spin.min.js"></script>
 <script src="../bower_components/ladda/dist/ladda.min.js"></script>
 
-<script src="https://ajax.googleapis.com/ajax/libs/webfont/1.5.18/webfont.js"></script>
-<script>
-  WebFont.load({
-    google: {
-      families: ['Roboto:300,400']
-    }
-  });
-</script>
-
 <dom-module id="gig-button">
-
     <style>
 
         :host {
@@ -41,6 +33,10 @@
         * {
             box-sizing: border-box;
             outline:none;
+        }
+
+        iron-icon {
+            width: 17px;
         }
 
         button {
@@ -393,7 +389,7 @@
             disabled$="{{disabled}}">
             <span class="ladda-label">
                 <template is="dom-if" if="[[icon]]">
-                    <i class$="[[getClassIcon(icon)]]"></i>
+                    <iron-icon icon$="[[getClassIcon(icon)]]"></iron-icon>
                 </template>
                 <content></content>
             </span>
@@ -419,7 +415,7 @@
                     return className;
                 },
                 getClassIcon: function(icon) {
-                    return 'fa '+icon;
+                    return 'fa:'+icon.replace('fa-', '');
                 },
                 handleClick: function(e) {
                     if (this.link) {

@@ -1,27 +1,19 @@
 <!--
  Webcomponents to generate custom button
- @version v0.0.6 - 2015-12-16
+ @version v0.0.7 - 2016-01-21
  @link https://github.com/gigigo-html5/gig-button
  @author Pedro José Peña Jerez <pedro.jose@gigigo.com>
  @license MIT License, http://www.opensource.org/licenses/MIT
  -->
 <link rel="import" href="../polymer/polymer.html">
-<link rel="stylesheet" href="../components-font-awesome/css/font-awesome.css">
+<link rel="import" href="../gig-icon/gig-icon.html">
+<link rel="import" href="../iron-icon/iron-icon.html">
 <link rel="stylesheet" href="../ladda/dist/ladda.min.css">
+<link rel="stylesheet" href="../font-roboto/dist/fonts/roboto.min.css">
 <script src="../ladda/dist/spin.min.js"></script>
 <script src="../ladda/dist/ladda.min.js"></script>
 
-<script src="https://ajax.googleapis.com/ajax/libs/webfont/1.5.18/webfont.js"></script>
-<script>
-  WebFont.load({
-    google: {
-      families: ['Roboto:300,400']
-    }
-  });
-</script>
-
 <dom-module id="gig-button">
-
     <style>
 
         :host {
@@ -48,6 +40,10 @@
         * {
             box-sizing: border-box;
             outline:none;
+        }
+
+        iron-icon {
+            width: 17px;
         }
 
         button {
@@ -400,7 +396,7 @@
             disabled$="{{disabled}}">
             <span class="ladda-label">
                 <template is="dom-if" if="[[icon]]">
-                    <i class$="[[getClassIcon(icon)]]"></i>
+                    <iron-icon icon$="[[getClassIcon(icon)]]"></iron-icon>
                 </template>
                 <content></content>
             </span>
@@ -426,7 +422,7 @@
                     return className;
                 },
                 getClassIcon: function(icon) {
-                    return 'fa '+icon;
+                    return 'fa:'+icon.replace('fa-', '');
                 },
                 handleClick: function(e) {
                     if (this.link) {
