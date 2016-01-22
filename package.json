@@ -1,6 +1,6 @@
 {
   "name": "gig-button",
-  "version": "0.0.7",
+  "version": "0.0.8",
   "description": "Webcomponents to generate custom button",
   "main": "gruntfile.js",
   "scripts": {
