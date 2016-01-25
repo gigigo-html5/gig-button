@@ -15,9 +15,7 @@
   ],
   "dependencies": {
     "polymer": "~1.2.0",
-    "components-font-awesome": "~4.4.0",
     "ladda": "~0.9.8",
-    "gig-icon": "~0.0.1",
-    "font-roboto": "~0.0.2"
+    "gig-icon": "~0.0.1"
   }
 }
