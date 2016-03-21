@@ -1,9 +1,9 @@
-<link rel="import" href="../polymer/polymer.html">
-<link rel="import" href="../gig-icon/gig-icon.html">
-<link rel="import" href="../iron-icon/iron-icon.html">
-<link rel="stylesheet" href="../ladda/dist/ladda.min.css">
-<script src="../ladda/dist/spin.min.js"></script>
-<script src="../ladda/dist/ladda.min.js"></script>
+<link rel="import" href="../bower_components/polymer/polymer.html">
+<link rel="import" href="../bower_components/gig-icon/gig-icon.html">
+<link rel="import" href="../bower_components/iron-icon/iron-icon.html">
+<link rel="stylesheet" href="../bower_components/ladda/dist/ladda.min.css">
+<script src="../bower_components/ladda/dist/spin.min.js"></script>
+<script src="../bower_components/ladda/dist/ladda.min.js"></script>
 
 <dom-module id="gig-button">
     <style>
@@ -38,6 +38,7 @@
         iron-icon {
             width: 14px;
             height: 14px;
+            @apply(--gig-button-icon);
         }
 
         button {
@@ -372,6 +373,14 @@
 
         .btn-pure.btn-default:hover {
             color: #ccd5db;
+        }
+
+        .btn-pure.btn-white {
+            color: white;
+        }
+
+        .btn-pure.btn-white:hover {
+            color: rgba(255, 255, 255, 0.6);
         }
 
 

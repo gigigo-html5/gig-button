@@ -6,7 +6,7 @@
     <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
     <meta name="mobile-web-app-capable" content="yes">
     <title>Gig Component Checkbox</title>
-    <link rel="import" href="/demo/gig-button.html">
+    <link rel="import" href="/src/gig-button.html">
 
     <style is="custom-style">
         body {
@@ -21,6 +21,30 @@
 
         label {
             display: block;
+        }
+
+        .square {
+            padding: 5px;
+            border-radius: 3px;
+            background: rgba(0, 0, 0, 0.7);
+            display: inline-block;
+        }
+
+    </style>
+    <style is="custom-style">
+
+        .icon-sort-desc {
+            --gig-button-icon: {
+                top: -3px;
+                position: relative;
+            }
+        }
+
+        .icon-sort-asc {
+            --gig-button-icon: {
+                top: 3px;
+                position: relative;
+            }
         }
 
     </style>
@@ -57,6 +81,11 @@
         <gig-button class="btn-default btn-icon btn-pure" icon="fa-download"></gig-button>
         <gig-button class="btn-warning btn-icon btn-pure" icon="fa-exclamation-triangle"></gig-button>
         <gig-button class="btn-danger btn-icon btn-pure" icon="fa-calendar"></gig-button>
+
+        <div class="square">
+            <gig-button class="btn-white btn-icon btn-pure icon-sort-desc" icon="fa-sort-desc"></gig-button>
+            <gig-button class="btn-white btn-icon btn-pure icon-sort-asc" icon="fa-sort-asc"></gig-button>
+        </div>
     </div>
 
 

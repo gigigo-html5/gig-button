@@ -1,9 +1,10 @@
 <!--
  Webcomponents to generate custom button
- @version v0.0.9 - 2016-01-25
+ @version v0.0.10 - 2016-03-21
  @link https://github.com/gigigo-html5/gig-button
  @author Pedro José Peña Jerez <pedro.jose@gigigo.com>
  @license MIT License, http://www.opensource.org/licenses/MIT
+
  -->
 <link rel="import" href="../polymer/polymer.html">
 <link rel="import" href="../gig-icon/gig-icon.html">
@@ -45,6 +46,7 @@
         iron-icon {
             width: 14px;
             height: 14px;
+            @apply(--gig-button-icon);
         }
 
         button {
@@ -379,6 +381,14 @@
 
         .btn-pure.btn-default:hover {
             color: #ccd5db;
+        }
+
+        .btn-pure.btn-white {
+            color: white;
+        }
+
+        .btn-pure.btn-white:hover {
+            color: rgba(255, 255, 255, 0.6);
         }
 
 
