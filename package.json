@@ -1,12 +1,20 @@
 {
   "name": "gig-button",
-  "version": "0.0.10",
+  "version": "0.1.0",
   "description": "Webcomponents to generate custom button",
   "main": "gruntfile.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "release": "./node_modules/.bin/gulp release",
-    "postinstall": "./node_modules/.bin/bower install"
+    "test": "npm run lint-polymer",
+    "release": "gulp release",
+    "postinstall": "bower install",
+    "check-bower-deps": "ncu -m bower",
+    "check-npm-deps": "ncu",
+    "update-deps": "ncu -u && ncu -m bower -u",
+    "serve": "ws -p 3001",
+    "lint-polymer": "polylint --root src gig-button.html gig-button-style.html",
+    "release:patch": "npm version patch --no-git-tag-version && git add package.json && git commit -m \"chore(npm): update npm version\" && bower version patch -m \"chore(release): Bump to %s\" && git push --tags",
+    "release:minor": "npm version minor --no-git-tag-version && git add package.json && git commit -m \"chore(npm): update npm version\" && bower version minor -m \"chore(release): Bump to %s\" && git push --tags",
+    "release:major": "npm version major --no-git-tag-version && git add package.json && git commit -m \"chore(npm): update npm version\" && bower version major -m \"chore(release): Bump to %s\" && git push --tags"
   },
   "repository": {
     "type": "git",
@@ -22,7 +30,10 @@
     "dateformat": "^1.0.12",
     "gulp": "^3.9.1",
     "gulp-header": "^1.7.1",
-    "gulp-replace": "^0.5.4"
+    "gulp-replace": "^0.5.4",
+    "local-web-server": "^1.2.6",
+    "npm-check-updates": "^2.7.2",
+    "polylint": "^2.10.1"
   },
   "homepage": "https://github.com/gigigo-html5/gig-button"
 }
