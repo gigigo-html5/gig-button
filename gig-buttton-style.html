@@ -1,0 +1,388 @@
+<!--
+ Webcomponents to generate custom button
+ @version v0.0.10 - 2016-07-20
+ @link https://github.com/gigigo-html5/gig-button
+ @author Pedro José Peña Jerez <pedro.jose@gigigo.com>
+ @license MIT License, http://www.opensource.org/licenses/MIT
+
+ -->
+<dom-module id="gig-button-style">
+  <template>
+    <style>
+      :host {
+        display: inline-block;
+        position: relative;
+        box-sizing: border-box;
+        background: transparent !important;
+        text-align: center;
+        font: inherit;
+        text-transform: uppercase;
+        outline-width: 0;
+        border-radius: 3px;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        -webkit-user-select: none;
+        user-select: none;
+        cursor: pointer;
+        z-index: 0;
+        margin: 0;
+        padding: 0 !important;
+        font-family: Roboto, sans-serif;
+        @apply(--gig-button);
+      }
+
+      * {
+        box-sizing: border-box;
+        outline:none;
+      }
+
+      iron-icon {
+        width: 14px;
+        height: 14px;
+        @apply(--gig-button-icon);
+      }
+
+      button {
+        padding: 6px 15px;
+        font-size: 14px;
+        line-height: 1.57142857;
+        border-radius: 3px;
+        -webkit-font-smoothing: subpixel-antialiased;
+        transition: border .2s linear,color .2s linear,width .2s linear,background-color .2s linear;
+        -webkit-transition: border .2s linear,color .2s linear,width .2s linear,background-color .2s linear;
+        margin-bottom: 0;
+        font-weight: 300;
+        text-align: center;
+        vertical-align: middle;
+        touch-action: manipulation;
+        -ms-touch-action: manipulation;
+        cursor: pointer;
+        background-image: none;
+        border: 1px solid transparent;
+        color: #76838f;
+        background-color: #e4eaec;
+        border-color: #e4eaec;
+      }
+
+      button:hover {
+        background-color: #f3f7f9;
+        border-color: #f3f7f9;
+      }
+
+      button:active {
+        background-color: #76838f;
+        border-color: #76838f;
+      }
+
+      button[disabled] {
+        opacity: .65;
+        cursor: not-allowed;
+      }
+
+      button i {
+        width: 1em;
+        line-height: inherit;
+        margin: 0 3px;
+      }
+
+      .btn-default, .ladda-button.btn-default[disabled] {
+        color: #76838f;
+        background-color: #e4eaec;
+        border-color: #e4eaec;
+      }
+
+      .btn-default:hover {
+        background-color: #f3f7f9;
+        border-color: #f3f7f9;
+      }
+
+      .btn-default:active {
+        background-color: #76838f;
+        border-color: #76838f;
+      }
+
+      .btn-primary, .btn-primary[disabled], .ladda-button.btn-primary[disabled], .btn-outline.btn-primary:hover  {
+        background-color: #62a8ea;
+        color: white;
+        border-color: #62a8ea;
+      }
+
+      .btn-primary:hover {
+        background-color: #89bceb;
+        border-color: #89bceb;
+      }
+
+      .btn-primary:active {
+        background-color: #4e97d9;
+        border-color: #4e97d9;
+      }
+
+      .btn-success, .ladda-button.btn-success[disabled] {
+        background-color: #46be8a;
+        color: white;
+        border-color: #46be8a;
+      }
+
+      .btn-success:hover, .btn-outline.btn-success:hover {
+        background-color: #5cd29d;
+        border-color: #5cd29d;
+        color: white;
+      }
+
+      .btn-success:active {
+        background-color: #36ab7a;
+        border-color: #36ab7a;
+      }
+
+      .btn-info, .ladda-button.btn-info[disabled] {
+        background-color: #57c7d4;
+        color: white;
+        border-color: #57c7d4;
+      }
+
+      .btn-info:hover, .btn-outline.btn-info:hover {
+        background-color: #77d6e1;
+        color: white;
+        border-color: #77d6e1;
+      }
+
+      .btn-info:active {
+        background-color: #47b8c6;
+        border-color: #47b8c6;
+      }
+
+      .btn-warning, .ladda-button.btn-warning[disabled], .btn-warning:hover {
+        background-color: #f2a654;
+        color: white;
+        border-color: #f2a654;
+      }
+
+      .btn-warning:hover {
+        background-color: #f4b066;
+        border-color: #f4b066;
+      }
+
+      .btn-warning:active {
+        background-color: #e79857;
+        border-color: #e79857;
+      }
+
+      .btn-danger, .ladda-button.btn-danger[disabled] {
+        background-color: #f96868;
+        color: white;
+        border-color: #f96868;
+      }
+
+      .btn-danger:hover, .btn-outline.btn-danger:hover {
+        background-color: #fa7a7a;
+        color: white;
+        border-color: #fa7a7a;
+      }
+
+      .btn-danger:active {
+        background-color: #e9595b;
+        border-color: #e9595b;
+      }
+
+      .btn-custom, .ladda-button.btn-custom[disabled] {
+        background-color: --var(--button-background-color, #76838f);
+        color: --var(--button-text-color, #76838f);
+        border-color: --var(--button-border-color, #e4eaec);
+      }
+
+      .btn-custom:hover {
+        background-color: --var(--button-background-color-hover, #f3f7f9);
+        color: --var(--button-text-color-hover, #76838f);
+        border-color: --var(--button-border-color-hover, #f3f7f9);
+      }
+
+      .btn-custom:active {
+        background-color: --var(--button-background-color-hover, #76838f);
+        color: --var(--button-text-color-hover, #76838f);
+        border-color: --var(--button-border-color-hover, #76838f);
+      }
+
+      .btn-outline.btn-default, .btn-outline.btn-primary, .btn-outline.btn-success, .btn-outline.btn-danger, .btn-outline.btn-success, .btn-outline.btn-info, .btn-outline.btn-custom {
+        background-color: transparent;
+      }
+
+      .btn-outline.btn-primary {
+        color: #89bceb;
+      }
+
+      .btn-outline.btn-success {
+        color: #46be8a;
+      }
+
+      .btn-outline.btn-danger {
+        color: #f96868;
+      }
+
+      .btn-outline.btn-info {
+        color: #57c7d4
+      }
+
+      .btn-outline.btn-warning {
+        color: #f2a654
+      }
+
+      .btn-floating {
+        width: 56px;
+        height: 56px;
+        padding: 0;
+        font-size: 24px;
+        text-align: center;
+        border-radius: 100%;
+        box-shadow: 0 6px 10px rgba(0,0,0,.15);
+      }
+
+      .btn-block {
+        display: block;
+        width: 100%;
+      }
+
+      .btn-animate {
+        overflow: hidden;
+        position: relative;
+      }
+
+      .btn-animate-vertical span {
+        -webkit-transition: all .2s ease-out 0s;
+        transition: all .2s ease-out 0s;
+      }
+
+      .btn-animate-vertical:hover span {
+        -webkit-transform: translate(0,150%);
+        transform: translate(0,150%);
+      }
+
+      .btn-animate span {
+        display: block;
+        width: 100%;
+        height: 100%;
+        -webkit-transform: translate(0,0);
+        transform: translate(0,0);
+      }
+
+      .btn-animate-vertical span > i {
+        position:absolute;
+        top: -10px;
+        left: 50%;
+        font-size: 14px;
+        display: block;
+        transform: translate(-50%,-100%);
+        -webkit-transform: translate(-50%,-100%)
+      }
+
+      .btn-animate-side span {
+        transition .2s ease-out 0s;
+        -webkit-transition: .2s ease-out 0s
+      }
+
+      .btn-animate-side span > i {
+        position: absolute;
+        top: 50%;
+        left: 0;
+        display: block;
+        opacity: 0;
+        transition: opacity .2s ease-out 0s;
+        -webkit-transition: opacity .2s ease-out 0s;
+        transform: translate(-20px,-50%);
+        -webkit-transform: translate(-20px,-50%);
+      }
+
+      .btn-animate-side:hover span {
+        transform: translate(10px,0);
+        -webkit-transform: translate(10px,0);
+      }
+
+      .btn-animate-side:hover span > i {
+        opacity: 1;
+      }
+
+      .btn-raised {
+        box-shadow: 0 0 2px rgba(0,0,0,.18),0 2px 4px rgba(0,0,0,.21);
+      }
+
+      .btn-flat {
+        background: 0,0;
+        border: none;
+        box-shadow: none;
+      }
+
+      .btn-icon {
+        padding: 10px;
+        line-height: 1em;
+      }
+
+      .btn-icon i {
+        margin: -1px 0 0
+      }
+
+      .btn-round {
+        border-radius: 1000px;
+      }
+
+      .btn-pure, .btn-pure:hover {
+        background: transparent;
+        border: 0;
+      }
+
+      .btn-pure.btn-danger {
+        color: #f96868;
+      }
+
+      .btn-pure.btn-danger:hover {
+        color: #fa9898;
+      }
+
+      .btn-pure.btn-warning {
+        color: #f2a654;
+      }
+
+      .btn-pure.btn-warning:hover {
+        color: #f6be80;
+      }
+
+      .btn-pure.btn-info {
+        color: #57c7d4;
+      }
+
+      .btn-pure.btn-info:hover {
+        color: #77d6e1;
+      }
+
+      .btn-pure.btn-success {
+        color: #46be8a;
+      }
+
+      .btn-pure.btn-success:hover {
+        color: #5cd29d;
+      }
+
+      .btn-pure.btn-primary {
+        color: #4e97d9;
+      }
+
+      .btn-pure.btn-primary:hover {
+        color: #89bceb;
+      }
+
+      .btn-pure.btn-default {
+        color: #a3afb7;
+      }
+
+      .btn-pure.btn-default:hover {
+        color: #ccd5db;
+      }
+
+      .btn-pure.btn-white {
+        color: white;
+      }
+
+      .btn-pure.btn-white:hover {
+        color: rgba(255, 255, 255, 0.6);
+      }
+    </style>
+  </template>
+</dom-module>
