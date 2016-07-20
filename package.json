@@ -11,7 +11,7 @@
     "check-npm-deps": "ncu",
     "update-deps": "ncu -u && ncu -m bower -u",
     "serve": "ws -p 3001",
-    "lint-polymer": "polylint --root src gig-input.html gig-input-color-behavior.html gig-input-date-behavior.html gig-input-style.html",
+    "lint-polymer": "polylint --root src gig-button.html gig-button-style.html",
     "release:patch": "npm version patch --no-git-tag-version && git add package.json && git commit -m \"chore(npm): update npm version\" && bower version patch -m \"chore(release): Bump to %s\" && git push --tags",
     "release:minor": "npm version minor --no-git-tag-version && git add package.json && git commit -m \"chore(npm): update npm version\" && bower version minor -m \"chore(release): Bump to %s\" && git push --tags",
     "release:major": "npm version major --no-git-tag-version && git add package.json && git commit -m \"chore(npm): update npm version\" && bower version major -m \"chore(release): Bump to %s\" && git push --tags"
