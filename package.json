@@ -12,9 +12,9 @@
     "update-deps": "ncu -u && ncu -m bower -u",
     "serve": "ws -p 3001",
     "lint-polymer": "polylint --root src gig-button.html gig-button-style.html",
-    "release:patch": "npm version patch --no-git-tag-version && git add package.json && git commit -m \"chore(npm): update npm version\" && bower version patch -m \"chore(release): Bump to %s\" && git push --tags",
-    "release:minor": "npm version minor --no-git-tag-version && git add package.json && git commit -m \"chore(npm): update npm version\" && bower version minor -m \"chore(release): Bump to %s\" && git push --tags",
-    "release:major": "npm version major --no-git-tag-version && git add package.json && git commit -m \"chore(npm): update npm version\" && bower version major -m \"chore(release): Bump to %s\" && git push --tags"
+    "release:patch": "gulp release && npm version patch --no-git-tag-version && git add package.json && git commit -m \"chore(npm): update npm version\" && bower version patch -m \"chore(release): Bump to %s\" && git push --tags",
+    "release:minor": "gulp release && npm version minor --no-git-tag-version && git add package.json && git commit -m \"chore(npm): update npm version\" && bower version minor -m \"chore(release): Bump to %s\" && git push --tags",
+    "release:major": "gulp release && npm version major --no-git-tag-version && git add package.json && git commit -m \"chore(npm): update npm version\" && bower version major -m \"chore(release): Bump to %s\" && git push --tags"
   },
   "repository": {
     "type": "git",
