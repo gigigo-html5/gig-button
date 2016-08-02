@@ -16,7 +16,7 @@
   "dependencies": {
     "ladda": "~0.9.8",
     "gig-icon": "~0.1.0",
-    "polymer": "^1.6.0"
+    "polymer": "^1.6.1"
   },
   "devDependencies": {
     "web-component-tester": "^4.2.2",
