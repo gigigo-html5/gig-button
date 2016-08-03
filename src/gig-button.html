@@ -1,16 +1,16 @@
 <link rel="import" href="../bower_components/polymer/polymer.html">
 <link rel="import" href="../bower_components/gig-icon/gig-icon.html">
 <link rel="import" href="../bower_components/iron-icon/iron-icon.html">
-<link rel="stylesheet" href="../bower_components/ladda/dist/ladda.min.css">
-
-<link rel="import" href="gig-button-style.html">
 
 <script src="../bower_components/ladda/dist/spin.min.js"></script>
 <script src="../bower_components/ladda/dist/ladda.min.js"></script>
 
+<link rel="stylesheet" href="../bower_components/ladda/dist/ladda.min.css">
+
+<link rel="import" href="gig-button-style.html">
+
 <dom-module id="gig-button">
   <template>
-
     <style include="gig-button-style"></style>
 
     <button
@@ -42,7 +42,6 @@
           'click': 'handleClick'
         },
         getClassList: function(className) {
-
           if (this.progress) {
             className += ' ladda-button';
           }
@@ -73,7 +72,7 @@
           class: {
             type: String
           },
-          name: {
+/*          name: {
             type: String
           },
           value: {
@@ -81,7 +80,7 @@
           },
           icon: {
             type: String
-          },
+          },*/
           type: {
             type: String,
             value: 'button'
